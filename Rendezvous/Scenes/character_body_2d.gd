@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var gravity_down_factor: float = 2.5
 
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
+@onready var cyote_timer: Timer = $CyoteTimer
 
 enum State{idle, walk, jump, down}
 var current_state: State = State.idle
@@ -17,9 +18,8 @@ func _physics_process(delta: float) -> void:
 	update_states()
 	
 func handle_input() -> void: 
-	if Input.is_action_just_pressed("ui_up") and is_on_floor(): 
-		velocity.y = jump_speed
-		current_state == State.jump
+	if Input.is_action_just_pressed("ui_up"): 
+		jump_buffer_timer.start()
 		
 	var direction = Input.get_axis("ui_left", "ui_right") 
 	if direction == 0: 
@@ -29,6 +29,11 @@ func handle_input() -> void:
 		
 
 func update_movement(delta: float) -> void: 
+	if (is_on_floor()|| cyote_timer.time_left > 0) && jump_buffer_timer.time_left > 0:
+		velocity.y = jump_speed
+		current_state = State.jump
+		jump_buffer_timer.stop()
+		cyote_timer.stop() 
 	if current_state == State.jump:	
 		velocity.y += gravity * delta 
 	else:
@@ -43,6 +48,7 @@ func update_states() -> void:
 				current_state = State.idle
 			if not is_on_floor() && velocity.y > 0:
 				current_state = State.down 
+				cyote_timer.start()  
 		State.jump when velocity.y < 0:
 				current_state = State.down
 		State.down when is_on_floor(): 

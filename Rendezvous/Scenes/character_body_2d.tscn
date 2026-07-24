@@ -25,5 +25,8 @@ position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
 [node name="JumpBufferTimer" type="Timer" parent="." unique_id=1439818444]
-wait_time = 0.103
+wait_time = 0.256
 one_shot = true
+
+[node name="CyoteTimer" type="Timer" parent="." unique_id=1616286909]
+wait_time = 0.5
