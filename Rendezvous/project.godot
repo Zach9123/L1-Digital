@@ -24,6 +24,10 @@ ui_up={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="spikes"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

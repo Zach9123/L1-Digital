@@ -17,7 +17,6 @@ texture = ExtResource("1_ymxaj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
 position = Vector2(5.9604645e-08, 0.5)
 shape = SubResource("RectangleShape2D_88kja")
-metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410634314]
 zoom = Vector2(1.5, 1.5)
@@ -29,4 +28,5 @@ wait_time = 0.256
 one_shot = true
 
 [node name="CyoteTimer" type="Timer" parent="." unique_id=1616286909]
-wait_time = 0.5
+wait_time = 0.293
+one_shot = true

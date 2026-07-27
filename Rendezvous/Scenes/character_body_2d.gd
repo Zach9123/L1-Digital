@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export var acceleration: int = 15
 @export var speed: int = 150
-@export var jump_speed: int = -speed * 2.8
+@export var jump_speed: int = -speed * 3
 @export var gravity: int = speed * 4
 @export var gravity_down_factor: float = 2.5
 
@@ -29,12 +29,13 @@ func handle_input() -> void:
 		
 
 func update_movement(delta: float) -> void: 
-	if (is_on_floor()|| cyote_timer.time_left > 0) && jump_buffer_timer.time_left > 0:
+	if (is_on_floor() || cyote_timer.time_left > 0) && jump_buffer_timer.time_left > 0: 
 		velocity.y = jump_speed
 		current_state = State.jump
 		jump_buffer_timer.stop()
-		cyote_timer.stop() 
-	if current_state == State.jump:	
+		cyote_timer.stop()
+		 
+	if current_state == State.jump:
 		velocity.y += gravity * delta 
 	else:
 		velocity.y += gravity * gravity_down_factor * delta 
@@ -43,17 +44,22 @@ func update_states() -> void:
 	match current_state:
 		State.idle when velocity.x != 0:
 			current_state = State.walk 
+			
 		State.walk:
 			if velocity.x == 0:
 				current_state = State.idle
 			if not is_on_floor() && velocity.y > 0:
 				current_state = State.down 
 				cyote_timer.start()  
+				
 		State.jump when velocity.y < 0:
 				current_state = State.down
+				
 		State.down when is_on_floor(): 
+			
 			if velocity.x == 0: 
 				current_state = State.idle
+				
 			else:
 				current_state = State.walk
 				
