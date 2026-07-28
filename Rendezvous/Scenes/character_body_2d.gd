@@ -5,6 +5,9 @@ extends CharacterBody2D
 @export var gravity: int = speed * 4
 @export var gravity_down_factor: float = 2.5
 
+
+var start_position = Vector2(33, 19)
+
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var cyote_timer: Timer = $CyoteTimer
 
@@ -16,7 +19,18 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_movement(delta)
 	update_states()
-	
+	move_and_slide()
+
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var tilemap = collision.get_collider() as TileMapLayer
+		
+		if tilemap:
+			var cell = tilemap.local_to_map(collision.get_position() - collision.get_normal())
+		
+
+
+
 func handle_input() -> void: 
 	if Input.is_action_just_pressed("ui_up"): 
 		jump_buffer_timer.start()
@@ -63,4 +77,6 @@ func update_states() -> void:
 			else:
 				current_state = State.walk
 				
-			
+func respawn():
+	position = start_position
+	
