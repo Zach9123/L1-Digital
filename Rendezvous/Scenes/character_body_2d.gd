@@ -1,12 +1,12 @@
 extends CharacterBody2D
 @export var acceleration: int = 15
-@export var speed: int = 150
+@export var speed: int = 80
 @export var jump_speed: int = -speed * 3
 @export var gravity: int = speed * 4
 @export var gravity_down_factor: float = 2.5
 
 
-var start_position = Vector2(33, 19)
+var start_position = Vector2(579, 319)
 
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var cyote_timer: Timer = $CyoteTimer
@@ -27,8 +27,9 @@ func _physics_process(delta: float) -> void:
 		
 		if tilemap:
 			var cell = tilemap.local_to_map(collision.get_position() - collision.get_normal())
-		
-
+			var tile = tilemap.get_cell_tile_data(cell)
+			if tile and tile.get_custom_data('spikes'):
+				respawn()
 
 
 func handle_input() -> void: 

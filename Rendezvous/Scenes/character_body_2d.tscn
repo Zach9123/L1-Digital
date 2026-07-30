@@ -1,32 +1,89 @@
 [gd_scene format=3 uid="uid://g8nb2g61fk1m"]
 
 [ext_resource type="Script" uid="uid://hss5eyymjeei" path="res://Scenes/character_body_2d.gd" id="1_88kja"]
-[ext_resource type="Texture2D" uid="uid://clbgbeflg1isd" path="res://icon.svg" id="1_ymxaj"]
+[ext_resource type="Texture2D" uid="uid://by7ahgyulgmxx" path="res://sprites/messenger_guy_idle_v1 (1).png" id="2_88kja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88kja"]
-size = Vector2(24, 23)
+size = Vector2(27, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88kja"]
+atlas = ExtResource("2_88kja")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it8n0"]
+atlas = ExtResource("2_88kja")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbyq6"]
+atlas = ExtResource("2_88kja")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbq55"]
+atlas = ExtResource("2_88kja")
+region = Rect2(0, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t38ji"]
+atlas = ExtResource("2_88kja")
+region = Rect2(448, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbj7x"]
+atlas = ExtResource("2_88kja")
+region = Rect2(896, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxof2"]
+atlas = ExtResource("2_88kja")
+region = Rect2(0, 896, 448, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c36lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88kja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it8n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbyq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbq55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t38ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbj7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxof2")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 10.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1793281390]
 script = ExtResource("1_88kja")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1805280787]
-position = Vector2(0.062499393, 0.062499393)
-scale = Vector2(0.20214844, 0.20214844)
-texture = ExtResource("1_ymxaj")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
-position = Vector2(5.9604645e-08, 0.5)
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_88kja")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410634314]
-zoom = Vector2(1.5, 1.5)
+scale = Vector2(0.5, 0.5)
+zoom = Vector2(3.25, 3.25)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
 [node name="JumpBufferTimer" type="Timer" parent="." unique_id=1439818444]
-wait_time = 0.256
+wait_time = 0.08
 one_shot = true
 
 [node name="CyoteTimer" type="Timer" parent="." unique_id=1616286909]
 wait_time = 0.293
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
+sprite_frames = SubResource("SpriteFrames_c36lj")
+animation = &"idle"
