@@ -1,9 +1,9 @@
 extends CharacterBody2D
-@export var acceleration: int = 15
-@export var speed: int = 80
-@export var jump_speed: int = -speed * 3
-@export var gravity: int = speed * 4
-@export var gravity_down_factor: float = 2.5
+@export var acceleration: int = 25
+@export var speed: int = 200
+@export var jump_speed: int = -speed * 4.5
+@export var gravity: int = speed * 5
+@export var gravity_down_factor: float = 3
 
 
 var start_position = Vector2(579, 319)
@@ -54,7 +54,7 @@ func update_movement(delta: float) -> void:
 		velocity.y += gravity * delta 
 	else:
 		velocity.y += gravity * gravity_down_factor * delta 
-	
+	#withered kirk
 func update_states() -> void: 
 	match current_state:
 		State.idle when velocity.x != 0:

@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://hss5eyymjeei" path="res://Scenes/character_body_2d.gd" id="1_88kja"]
 [ext_resource type="Texture2D" uid="uid://by7ahgyulgmxx" path="res://sprites/messenger_guy_idle_v1 (1).png" id="2_88kja"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_88kja"]
-size = Vector2(27, 124)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_88kja"]
 atlas = ExtResource("2_88kja")
 region = Rect2(0, 0, 448, 448)
@@ -61,18 +58,33 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbyq6"]
+radius = 17.5
+height = 140.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1793281390]
 script = ExtResource("1_88kja")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
+position = Vector2(1.0000305, -8)
+scale = Vector2(1.188616, 1.188616)
+sprite_frames = SubResource("SpriteFrames_c36lj")
+animation = &"run"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_88kja")
+position = Vector2(0.5, -2)
+shape = SubResource("CapsuleShape2D_gbyq6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410634314]
 scale = Vector2(0.5, 0.5)
-zoom = Vector2(3.25, 3.25)
+zoom = Vector2(0.4, 0.4)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
@@ -83,7 +95,3 @@ one_shot = true
 [node name="CyoteTimer" type="Timer" parent="." unique_id=1616286909]
 wait_time = 0.293
 one_shot = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
-sprite_frames = SubResource("SpriteFrames_c36lj")
-animation = &"idle"

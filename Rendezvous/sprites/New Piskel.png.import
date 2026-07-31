@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://etaj2a6lvhkf"
-path="res://.godot/imported/New Piskel (1) (1).png-1fb39060032c3a355091a20f036fe6d1.ctex"
+uid="uid://c4rnmuhwc4ly8"
+path="res://.godot/imported/New Piskel.png-1d1450533306d83717fbc2d6a043035f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://New Piskel (1) (1).png"
-dest_files=["res://.godot/imported/New Piskel (1) (1).png-1fb39060032c3a355091a20f036fe6d1.ctex"]
+source_file="res://sprites/New Piskel.png"
+dest_files=["res://.godot/imported/New Piskel.png-1d1450533306d83717fbc2d6a043035f.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
