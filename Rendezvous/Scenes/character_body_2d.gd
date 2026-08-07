@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 var start_position = Vector2(579, 319)
 
+@onready var animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var cyote_timer: Timer = $CyoteTimer
 
@@ -20,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	update_movement(delta)
 	update_states()
 	move_and_slide()
+	update_animation()
 
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -42,7 +44,14 @@ func handle_input() -> void:
 	else:
 		velocity.x = move_toward(velocity.x, speed * direction, acceleration)
 		
-
+func update_animation() -> void:
+	if velocity.x == 0:
+		animations.play("idle")
+		return
+	animations.scale.x = sign(velocity.x)
+	animations.play("run")
+		
+		
 func update_movement(delta: float) -> void: 
 	if (is_on_floor() || cyote_timer.time_left > 0) && jump_buffer_timer.time_left > 0: 
 		velocity.y = jump_speed
@@ -81,3 +90,7 @@ func update_states() -> void:
 func respawn():
 	position = start_position
 	
+
+		
+		
+		
