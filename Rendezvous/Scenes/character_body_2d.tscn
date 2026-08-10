@@ -56,15 +56,15 @@ region = Rect2(896, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l447x"]
 atlas = ExtResource("4_t38ji")
-region = Rect2(896, 448, 448, 448)
+region = Rect2(0, 448, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u736u"]
 atlas = ExtResource("4_t38ji")
-region = Rect2(0, 448, 448, 448)
+region = Rect2(448, 448, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_glyrq"]
 atlas = ExtResource("4_t38ji")
-region = Rect2(448, 448, 448, 448)
+region = Rect2(896, 448, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f6q8"]
 atlas = ExtResource("4_t38ji")
@@ -106,8 +106,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_ancw4")
 }],
 "loop": 1,
-"name": &"fall",
-"speed": 5.0
+"name": &"down",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -153,10 +153,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2sln1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sln1")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"jump",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -173,30 +176,29 @@ animations = [{
 }],
 "loop": 1,
 "name": &"run",
-"speed": 7.0
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbyq6"]
-radius = 17.5
-height = 140.0
+radius = 23.0
+height = 122.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1793281390]
 script = ExtResource("1_88kja")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
-position = Vector2(0, -1)
-scale = Vector2(1.188616, 1.188616)
+position = Vector2(2.3750012, 1.3750012)
 sprite_frames = SubResource("SpriteFrames_c36lj")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
-position = Vector2(-1, 4)
+position = Vector2(8, 4)
 shape = SubResource("CapsuleShape2D_gbyq6")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410634314]
 scale = Vector2(0.5, 0.5)
-zoom = Vector2(0.4, 0.4)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 

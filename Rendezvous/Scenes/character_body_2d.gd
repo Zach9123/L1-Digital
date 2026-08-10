@@ -1,9 +1,11 @@
 extends CharacterBody2D
-@export var acceleration: int = 25
-@export var speed: int = 200
-@export var jump_speed: int = -speed * 4.5
-@export var gravity: int = speed * 5
-@export var gravity_down_factor: float = 3
+@export var acceleration: int = 40
+@export var speed: int = 350
+@warning_ignore("narrowing_conversion")
+@export var jump_speed: int = -speed * 3.55
+@export var gravity: int = speed * 7.5
+
+@export var gravity_down_factor: float = 2.3
 
 
 var start_position = Vector2(579, 319)
@@ -17,7 +19,6 @@ var current_state: State = State.idle
 
 func _physics_process(delta: float) -> void:
 	handle_input()
-	move_and_slide()
 	update_movement(delta)
 	update_states()
 	move_and_slide()
@@ -31,12 +32,13 @@ func _physics_process(delta: float) -> void:
 			var cell = tilemap.local_to_map(collision.get_position() - collision.get_normal())
 			var tile = tilemap.get_cell_tile_data(cell)
 			if tile and tile.get_custom_data('spikes'):
-				respawn()
+				pass
 
 
 func handle_input() -> void: 
 	if Input.is_action_just_pressed("ui_up"): 
 		jump_buffer_timer.start()
+	
 		
 	var direction = Input.get_axis("ui_left", "ui_right") 
 	if direction == 0: 
@@ -45,12 +47,14 @@ func handle_input() -> void:
 		velocity.x = move_toward(velocity.x, speed * direction, acceleration)
 		
 func update_animation() -> void:
-	if velocity.x == 0:
-		animations.play("idle")
-		return
-	animations.scale.x = sign(velocity.x)
-	animations.play("run")
+	if velocity.x != 0:
+		animations.scale.x = sign(velocity.x)
 		
+	match current_state:
+		State.idle: animations.play("idle")
+		State.jump: animations.play("jump")
+		State.walk: animations.play("run")
+		State.down: animations.play("down")
 		
 func update_movement(delta: float) -> void: 
 	if (is_on_floor() || cyote_timer.time_left > 0) && jump_buffer_timer.time_left > 0: 
@@ -61,6 +65,9 @@ func update_movement(delta: float) -> void:
 		 
 	if current_state == State.jump:
 		velocity.y += gravity * delta 
+		if Input.is_action_just_released("ui_up") and velocity.y < 0:
+			velocity.y *= 0.5 # Cuts upward momentum instantly on button release
+	
 	else:
 		velocity.y += gravity * gravity_down_factor * delta 
 	#withered kirk
@@ -76,8 +83,9 @@ func update_states() -> void:
 				current_state = State.down 
 				cyote_timer.start()  
 				
-		State.jump when velocity.y < 0:
+		State.jump when velocity.y > 0:
 				current_state = State.down
+				
 				
 		State.down when is_on_floor(): 
 			
