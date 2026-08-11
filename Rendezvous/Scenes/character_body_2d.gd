@@ -7,6 +7,15 @@ extends CharacterBody2D
 
 @export var gravity_down_factor: float = 2.3
 
+@export var dash_speed: float = 900.0
+@export var dash_duration: float = 0.2 
+@export var dash_cooldown: float = 0.5  
+
+var is_dashing: bool = false
+var can_dash: bool = true
+var dash_timer: float = 0.0
+var dash_cooldown_timer: float = 0.0
+var dash_direction: Vector2 = Vector2.ZERO
 
 var start_position = Vector2(579, 319)
 
@@ -14,8 +23,11 @@ var start_position = Vector2(579, 319)
 @onready var jump_buffer_timer: Timer = $JumpBufferTimer
 @onready var cyote_timer: Timer = $CyoteTimer
 
-enum State{idle, walk, jump, down}
+enum State{idle, walk, jump, down, dash}
 var current_state: State = State.idle
+
+
+
 
 func _physics_process(delta: float) -> void:
 	handle_input()
@@ -38,6 +50,10 @@ func _physics_process(delta: float) -> void:
 func handle_input() -> void: 
 	if Input.is_action_just_pressed("ui_up"): 
 		jump_buffer_timer.start()
+		
+	if Input.is_action_just_pressed("dash") and can_dash and not is_dashing:
+		start_dash()
+	
 	
 		
 	var direction = Input.get_axis("ui_left", "ui_right") 
