@@ -66,7 +66,7 @@ func update_movement(delta: float) -> void:
 	if current_state == State.jump:
 		velocity.y += gravity * delta 
 		if Input.is_action_just_released("ui_up") and velocity.y < 0:
-			velocity.y *= 0.5 # Cuts upward momentum instantly on button release
+			velocity.y *= 0.5 
 	
 	else:
 		velocity.y += gravity * gravity_down_factor * delta 
