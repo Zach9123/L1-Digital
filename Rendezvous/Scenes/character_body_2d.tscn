@@ -92,6 +92,11 @@ region = Rect2(448, 448, 448, 448)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c36lj"]
 animations = [{
+"frames": [],
+"loop": 1,
+"name": &"dash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_601d1")
@@ -189,7 +194,7 @@ script = ExtResource("1_88kja")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
 position = Vector2(2.3750012, 1.3750012)
 sprite_frames = SubResource("SpriteFrames_c36lj")
-animation = &"idle"
+animation = &"dash"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
@@ -207,5 +212,5 @@ wait_time = 0.08
 one_shot = true
 
 [node name="CyoteTimer" type="Timer" parent="." unique_id=1616286909]
-wait_time = 0.082
+wait_time = 0.18
 one_shot = true

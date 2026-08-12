@@ -7,9 +7,12 @@ extends CharacterBody2D
 
 @export var gravity_down_factor: float = 2.3
 
-@export var dash_speed: float = 900.0
+@export var dash_speed: float = 1200
 @export var dash_duration: float = 0.2 
 @export var dash_cooldown: float = 0.5  
+
+
+
 
 var is_dashing: bool = false
 var can_dash: bool = true
@@ -35,17 +38,9 @@ func _physics_process(delta: float) -> void:
 	update_states()
 	move_and_slide()
 	update_animation()
-
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var tilemap = collision.get_collider() as TileMapLayer
-		
-		if tilemap:
-			var cell = tilemap.local_to_map(collision.get_position() - collision.get_normal())
-			var tile = tilemap.get_cell_tile_data(cell)
-			if tile and tile.get_custom_data('spikes'):
-				pass
-
+	process_dash(delta) 
+	
+	
 
 func handle_input() -> void: 
 	if Input.is_action_just_pressed("ui_up"): 
@@ -53,10 +48,18 @@ func handle_input() -> void:
 		
 	if Input.is_action_just_pressed("dash") and can_dash and not is_dashing:
 		start_dash()
-	
+	if is_dashing:
+		return
 	
 		
 	var direction = Input.get_axis("ui_left", "ui_right") 
+	
+	if not is_dashing:
+		if direction == 0:
+			velocity.x = move_toward(velocity.x, 0, acceleration)
+		else:
+			velocity.x = move_toward(velocity.x, speed * direction, acceleration)
+			
 	if direction == 0: 
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 	else:
@@ -114,7 +117,34 @@ func update_states() -> void:
 func respawn():
 	position = start_position
 	
+func start_dash() -> void:
+	is_dashing = true
+	can_dash = false
+	dash_timer = dash_duration
+	dash_cooldown_timer = dash_cooldown
+	
+	# Dash in the direction the player is facing / pressing
+	var input_dir = Input.get_axis("ui_left", "ui_right")
+	if input_dir != 0:
+		dash_direction = Vector2(input_dir, 0).normalized()
+	else:
+		# Fallback to facing direction based on sprite scale
+		dash_direction = Vector2(animations.scale.x, 0).normalized()
 
+func process_dash(delta: float) -> void:
+	# Update timers
+	if is_dashing:
+		dash_timer -= delta
+		velocity = dash_direction * dash_speed  # Freeze Y velocity and force high horizontal velocity
 		
+		if dash_timer <= 0:
+			is_dashing = false
+			velocity.x = dash_direction.x * speed # Smooth transition back to normal speed
+
+	# Cooldown timer
+	if not can_dash:
+		dash_cooldown_timer -= delta
+		if dash_cooldown_timer <= 0:
+			can_dash = true
 		
 		
