@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Hard Work 2026 07 23 11 22 05 2026 07 23 12 04 21"
-run/main_scene="uid://ds16xp2ci1bns"
+run/main_scene="uid://nk8vlyxyhial"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1153
+window/size/viewport_width=960
+window/size/viewport_height=540
 
 [input]
 
