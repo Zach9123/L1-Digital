@@ -186,7 +186,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbyq6"]
 radius = 23.0
-height = 122.0
+height = 118.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1793281390]
 script = ExtResource("1_88kja")
@@ -194,7 +194,7 @@ script = ExtResource("1_88kja")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
 position = Vector2(2.3750012, 1.3750012)
 sprite_frames = SubResource("SpriteFrames_c36lj")
-animation = &"dash"
+animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
