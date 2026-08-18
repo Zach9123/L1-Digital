@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://odv7j1404xr6"]
 
-[ext_resource type="Texture2D" uid="uid://cfnqfc81wvcag" path="res://sprites/Npc_bigboss_placeholder.png" id="1_qqbk1"]
+[ext_resource type="Texture2D" uid="uid://cfnqfc81wvcag" path="res://sprites/Npc_bigboss_placeholder.png" id="1_b5h8w"]
+[ext_resource type="Script" uid="uid://bdfgtor5p38sy" path="res://Scenes/old_boss_npc.gd" id="1_uo13p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pr1l4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qqbk1")
+"texture": ExtResource("1_b5h8w")
 }],
 "loop": 1,
 "name": &"default",
@@ -17,7 +18,11 @@ animations = [{
 radius = 14.0
 height = 108.0
 
-[node name="Big_Boss_NPC" type="CharacterBody2D" unique_id=1780989057]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pr1l4"]
+radius = 135.0
+
+[node name="Old_Boss_NPC" type="CharacterBody2D" unique_id=1780989057]
+script = ExtResource("1_uo13p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2131196343]
 position = Vector2(4, 11)
@@ -29,3 +34,10 @@ position = Vector2(0, 21)
 shape = SubResource("CapsuleShape2D_pr1l4")
 
 [node name="chat_detection" type="Area2D" parent="." unique_id=1540960374]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection" unique_id=1388977119]
+position = Vector2(0, -20)
+shape = SubResource("CircleShape2D_pr1l4")
+
+[node name="Timer" type="Timer" parent="." unique_id=1329255533]
+autostart = true
