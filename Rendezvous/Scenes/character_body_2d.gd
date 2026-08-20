@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_speed: int = -speed * 3.55
 @export var gravity: int = speed * 7.5
 
-@export var gravity_down_factor: float = 2.3
+@export var gravity_down_factor: float = 1.8
 
 @export var dash_speed: float = 1200
 @export var dash_duration: float = 0.2 
