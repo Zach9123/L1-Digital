@@ -1,11 +1,11 @@
 extends CharacterBody2D
-@export var acceleration: int = 40
-@export var speed: int = 350
+@export var acceleration: int = 200
+@export var speed: int = 380
 @warning_ignore("narrowing_conversion")
-@export var jump_speed: int = -speed * 3.55
+@export var jump_speed: int = -speed * 3.5
 @export var gravity: int = speed * 7.5
 
-@export var gravity_down_factor: float = 1.8
+@export var gravity_down_factor: float = 1.4
 
 @export var dash_speed: float = 1200
 @export var dash_duration: float = 0.2 
