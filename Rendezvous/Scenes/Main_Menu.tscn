@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nk8vlyxyhial"]
 
-[ext_resource type="Script" uid="uid://bw0pqjang20e1" path="res://Scenes/main_menu.gd" id="1_c4tk2"]
+[ext_resource type="Script" uid="uid://bw0pqjang20e1" path="res://Scripts/main_menu.gd" id="1_c4tk2"]
 
 [node name="Main_Menu" type="Node2D" unique_id=977678936]
 script = ExtResource("1_c4tk2")
@@ -13,10 +13,10 @@ offset_bottom = 40.0
 
 [node name="Start" type="Button" parent="Button_Manager" unique_id=2087259212]
 layout_mode = 0
-offset_left = 343.0
-offset_top = 232.0
-offset_right = 610.0
-offset_bottom = 312.0
+offset_left = 352.0
+offset_top = 233.0
+offset_right = 619.0
+offset_bottom = 313.0
 text = "Start"
 
 [connection signal="pressed" from="Button_Manager/Start" to="." method="_on_start_pressed"]

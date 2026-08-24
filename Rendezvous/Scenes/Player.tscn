@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://g8nb2g61fk1m"]
 
-[ext_resource type="Script" uid="uid://hss5eyymjeei" path="res://Scenes/character_body_2d.gd" id="1_88kja"]
+[ext_resource type="Script" uid="uid://hss5eyymjeei" path="res://Scripts/Player.gd" id="1_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://by7ahgyulgmxx" path="res://sprites/messenger_guy_idle_v1 (1).png" id="2_88kja"]
 [ext_resource type="Texture2D" uid="uid://dst208xact370" path="res://sprites/messenger_guy_fall_animation_V3 (1).png" id="2_gbyq6"]
 [ext_resource type="Texture2D" uid="uid://dd0xwltor4yax" path="res://sprites/messenger_guy_run_animation_V3 (1).png" id="4_pbq55"]
@@ -189,7 +189,7 @@ radius = 23.0
 height = 118.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1793281390]
-script = ExtResource("1_88kja")
+script = ExtResource("1_5ixxa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
 position = Vector2(2.3750012, 1.3750012)

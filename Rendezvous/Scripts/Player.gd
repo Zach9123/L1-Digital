@@ -147,4 +147,3 @@ func process_dash(delta: float) -> void:
 		if dash_cooldown_timer <= 0:
 			can_dash = true
 		
-		
