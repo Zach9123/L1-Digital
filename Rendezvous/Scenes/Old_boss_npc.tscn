@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cfnqfc81wvcag" path="res://sprites/Npc_bigboss_placeholder.png" id="1_b5h8w"]
 [ext_resource type="Script" uid="uid://b78nd43nc6trk" path="res://Scenes/old_boss_npc.gd" id="1_uo13p"]
+[ext_resource type="FontFile" uid="uid://ho8er51p61kr" path="res://Other/Silkscreen-Regular.ttf" id="3_fkknu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pr1l4"]
+radius = 184.01086
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c36lj"]
 animations = [{
@@ -14,11 +18,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pr1l4"]
-radius = 184.01086
-
 [node name="Old_boss_npc" type="Area2D" unique_id=1113017715]
 script = ExtResource("1_uo13p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1882007081]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_pr1l4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1070071791]
 position = Vector2(3, 1)
@@ -35,19 +40,22 @@ text = "(Down)"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=118815812]
 
 [node name="ChatBox" type="Panel" parent="CanvasLayer" unique_id=1009648840]
-offset_left = 62.0
-offset_top = -134.0
-offset_right = 254.0
-offset_bottom = -31.0
+offset_left = 201.0
+offset_top = 372.0
+offset_right = 776.0
+offset_bottom = 491.0
+metadata/_edit_group_ = true
 
 [node name="DialogueText" type="Label" parent="CanvasLayer/ChatBox" unique_id=1742208269]
+light_mask = 3
+visibility_layer = 3
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1882007081]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_pr1l4")
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 575.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("3_fkknu")
+theme_override_font_sizes/font_size = 26
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

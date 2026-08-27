@@ -4,7 +4,7 @@ extends Area2D
 @onready var chat_box: Panel = $CanvasLayer/ChatBox
 @onready var dialogue_text: Label = $CanvasLayer/ChatBox/DialogueText
 
-@export var dialogue_lines: Array[String] = ["Hello there!", "Watch out for the spikes.", "Good luck!"]
+@export var dialogue_lines: Array[String] = ["So you have actaullly shown up", "", ""]
 @export var typing_speed: float = 0.04
 
 var player_in_range: bool = false
@@ -47,19 +47,19 @@ func _input(event: InputEvent) -> void:
 
 func show_line() -> void:
 	dialogue_text.text = dialogue_lines[current_line]
+	dialogue_text.visible_characters = -1 # <--- ADD THIS LINE! (-1 means "show all")
 	dialogue_text.visible_ratio = 0.0 # Start at 0% visible
 	is_typing = true
 	
-	if typing_tween and typing_tween.is_valid(): 
+	if typing_tween and typing_tween.is_valid():
 		typing_tween.kill()
-	
+		
 	typing_tween = create_tween()
 	var duration = dialogue_lines[current_line].length() * typing_speed
 	
-	# Animate the ratio from 0.0 (0%) to 1.0 (100%)
 	typing_tween.tween_property(dialogue_text, "visible_ratio", 1.0, duration)
 	typing_tween.finished.connect(func(): is_typing = false)
-
+	
 func finish_typing() -> void:
 	if typing_tween and typing_tween.is_valid(): 
 		typing_tween.kill()
