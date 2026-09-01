@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4rnmuhwc4ly8"
-path="res://.godot/imported/New Piskel.png-1d1450533306d83717fbc2d6a043035f.ctex"
+uid="uid://1u480x60vbbj"
+path="res://.godot/imported/rendezvous_paper_titleV2.png-ebd2243976810b135f71e15e6bce7b7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/New Piskel.png"
-dest_files=["res://.godot/imported/New Piskel.png-1d1450533306d83717fbc2d6a043035f.ctex"]
+source_file="res://sprites/rendezvous_paper_titleV2.png"
+dest_files=["res://.godot/imported/rendezvous_paper_titleV2.png-ebd2243976810b135f71e15e6bce7b7f.ctex"]
 
 [params]
 

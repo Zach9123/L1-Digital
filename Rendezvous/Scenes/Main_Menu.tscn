@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bw0pqjang20e1" path="res://Scripts/main_menu.gd" id="1_c4tk2"]
 [ext_resource type="Texture2D" uid="uid://bmfwacuy0cakd" path="res://sprites/main_menu_screen_v1.png" id="2_rmbjf"]
-[ext_resource type="Texture2D" uid="uid://dd0opv5finus2" path="res://sprites/rendezvous_paper_titleV1.png" id="3_b7rmo"]
+[ext_resource type="Texture2D" uid="uid://1u480x60vbbj" path="res://sprites/rendezvous_paper_titleV2.png" id="3_xvotp"]
 [ext_resource type="Texture2D" uid="uid://76idxjgcp63g" path="res://sprites/start_buttonV1.png" id="4_00u4r"]
 [ext_resource type="Texture2D" uid="uid://dpguoa7rpan8r" path="res://sprites/option_buttonV1.png" id="5_anlgx"]
+[ext_resource type="Texture2D" uid="uid://c4rnmuhwc4ly8" path="res://sprites/Endbutton.png" id="6_1edw4"]
 
 [sub_resource type="Animation" id="Animation_anlgx"]
 resource_name = "hover"
@@ -79,36 +80,40 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ey7y"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(0, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8ev7"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(448, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ul3f"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(896, 0, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2uu6"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(0, 448, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cebuy"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(448, 448, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3a5co"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(896, 448, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysyx0"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(0, 896, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q855l"]
-atlas = ExtResource("3_b7rmo")
+atlas = ExtResource("3_xvotp")
 region = Rect2(448, 896, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeb2h"]
+atlas = ExtResource("3_xvotp")
+region = Rect2(896, 896, 448, 448)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fu2oi"]
 animations = [{
@@ -136,6 +141,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q855l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeb2h")
 }],
 "loop": 0,
 "name": &"default",
@@ -298,6 +306,49 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d000"]
+atlas = ExtResource("6_1edw4")
+region = Rect2(0, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww33e"]
+atlas = ExtResource("6_1edw4")
+region = Rect2(224, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckybc"]
+atlas = ExtResource("6_1edw4")
+region = Rect2(0, 224, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1hx3"]
+atlas = ExtResource("6_1edw4")
+region = Rect2(224, 224, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g76vq"]
+atlas = ExtResource("6_1edw4")
+region = Rect2(0, 448, 224, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oxswf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d000")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww33e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckybc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1hx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g76vq")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main_Menu" type="Node2D" unique_id=977678936]
 script = ExtResource("1_c4tk2")
 
@@ -328,17 +379,22 @@ frame_progress = 0.3117461
 position = Vector2(574, 290)
 sprite_frames = SubResource("SpriteFrames_fu2oi")
 autoplay = "default"
-frame = 7
+frame = 8
 frame_progress = 1.0
 
 [node name="Options" type="AnimatedSprite2D" parent="." unique_id=472948588]
-position = Vector2(574, 342)
+position = Vector2(574, 345)
 sprite_frames = SubResource("SpriteFrames_my4yw")
 autoplay = "default"
 
 [node name="Start" type="AnimatedSprite2D" parent="." unique_id=2101840295]
-position = Vector2(572, 249)
+position = Vector2(574, 248)
 sprite_frames = SubResource("SpriteFrames_c36lj")
+autoplay = "default"
+
+[node name="End" type="AnimatedSprite2D" parent="." unique_id=1585040434]
+position = Vector2(414, 374)
+sprite_frames = SubResource("SpriteFrames_oxswf")
 autoplay = "default"
 
 [connection signal="pressed" from="Button_Manager/Start2" to="." method="_on_start_pressed"]
