@@ -5,15 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://1u480x60vbbj" path="res://sprites/rendezvous_paper_titleV2.png" id="3_xvotp"]
 [ext_resource type="Texture2D" uid="uid://76idxjgcp63g" path="res://sprites/start_buttonV1.png" id="4_00u4r"]
 [ext_resource type="Texture2D" uid="uid://dpguoa7rpan8r" path="res://sprites/option_buttonV1.png" id="5_anlgx"]
-[ext_resource type="Texture2D" uid="uid://c4rnmuhwc4ly8" path="res://sprites/Endbutton.png" id="6_1edw4"]
-
-[sub_resource type="Animation" id="Animation_anlgx"]
-resource_name = "hover"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvotp"]
-_data = {
-&"hover": SubResource("Animation_anlgx")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7rmo"]
 atlas = ExtResource("2_rmbjf")
@@ -190,7 +181,7 @@ region = Rect2(896, 896, 448, 448)
 atlas = ExtResource("5_anlgx")
 region = Rect2(0, 1344, 448, 448)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_my4yw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7rmo"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -223,7 +214,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_akrlg")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -268,7 +259,7 @@ region = Rect2(896, 896, 448, 448)
 atlas = ExtResource("4_00u4r")
 region = Rect2(0, 1344, 448, 448)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_c36lj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_00u4r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -301,50 +292,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u2ek0")
 }],
-"loop": 0,
-"name": &"default",
-"speed": 6.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3d000"]
-atlas = ExtResource("6_1edw4")
-region = Rect2(0, 0, 224, 224)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ww33e"]
-atlas = ExtResource("6_1edw4")
-region = Rect2(224, 0, 224, 224)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ckybc"]
-atlas = ExtResource("6_1edw4")
-region = Rect2(0, 224, 224, 224)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1hx3"]
-atlas = ExtResource("6_1edw4")
-region = Rect2(224, 224, 224, 224)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g76vq"]
-atlas = ExtResource("6_1edw4")
-region = Rect2(0, 448, 224, 224)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_oxswf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3d000")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ww33e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ckybc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q1hx3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g76vq")
-}],
-"loop": 0,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -352,49 +300,47 @@ animations = [{
 [node name="Main_Menu" type="Node2D" unique_id=977678936]
 script = ExtResource("1_c4tk2")
 
-[node name="Button_Manager" type="Control" parent="." unique_id=1704020457]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Start2" type="Button" parent="Button_Manager" unique_id=2087259212]
-layout_mode = 0
-offset_left = 509.0
-offset_top = 221.0
-offset_right = 635.0
-offset_bottom = 270.0
-pivot_offset = Vector2(161, 84)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Button_Manager/Start2" unique_id=1861126484]
-libraries/ = SubResource("AnimationLibrary_xvotp")
-
 [node name="Background" type="AnimatedSprite2D" parent="." unique_id=61903099]
+texture_filter = 1
 position = Vector2(560, 315)
 sprite_frames = SubResource("SpriteFrames_pr1l4")
 autoplay = "default"
 frame_progress = 0.3117461
 
 [node name="Main Menu" type="AnimatedSprite2D" parent="." unique_id=1169582809]
+texture_filter = 1
 position = Vector2(574, 290)
 sprite_frames = SubResource("SpriteFrames_fu2oi")
 autoplay = "default"
 frame = 8
 frame_progress = 1.0
 
-[node name="Options" type="AnimatedSprite2D" parent="." unique_id=472948588]
-position = Vector2(574, 345)
-sprite_frames = SubResource("SpriteFrames_my4yw")
-autoplay = "default"
+[node name="Button_Manager" type="Control" parent="." unique_id=1704020457]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Start" type="AnimatedSprite2D" parent="." unique_id=2101840295]
-position = Vector2(574, 248)
-sprite_frames = SubResource("SpriteFrames_c36lj")
-autoplay = "default"
+[node name="OptionsButton" type="TextureButton" parent="Button_Manager" unique_id=2104968306]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 318.0
+offset_right = 651.0
+offset_bottom = 367.0
 
-[node name="End" type="AnimatedSprite2D" parent="." unique_id=1585040434]
-position = Vector2(414, 374)
-sprite_frames = SubResource("SpriteFrames_oxswf")
-autoplay = "default"
+[node name="Options" type="AnimatedSprite2D" parent="Button_Manager/OptionsButton" unique_id=402531128]
+texture_filter = 1
+position = Vector2(84, 28)
+sprite_frames = SubResource("SpriteFrames_b7rmo")
 
-[connection signal="pressed" from="Button_Manager/Start2" to="." method="_on_start_pressed"]
+[node name="StartButton" type="TextureButton" parent="Button_Manager" unique_id=785440382]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 220.0
+offset_right = 637.0
+offset_bottom = 269.0
+
+[node name="Start" type="AnimatedSprite2D" parent="Button_Manager/StartButton" unique_id=1724593919]
+texture_filter = 1
+position = Vector2(64, 28)
+sprite_frames = SubResource("SpriteFrames_00u4r")
