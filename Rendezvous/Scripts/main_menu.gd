@@ -1,15 +1,31 @@
 extends Node2D
 
+@onready var start_sprite: AnimatedSprite2D = $Button_Manager/StartButton/Start
+@onready var options_sprite: AnimatedSprite2D = $Button_Manager/OptionsButton/Options
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# Set both sprites to use the "On" animation
+	start_sprite.animation = "On"
+	options_sprite.animation = "On"
+	
+	# Jump exactly to frame 1 (or 0 for the first image)
+	start_sprite.frame = 1
+	options_sprite.frame = 1
+	
+	# Stop them from playing so they stay frozen on that frame until hovered
+	start_sprite.stop()
+	options_sprite.stop()
 
+# --- Start Button ---
+func _on_start_button_mouse_entered() -> void:
+	start_sprite.play("On")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_start_button_mouse_exited() -> void:
+	start_sprite.play("Off")
 
+# --- Options Button ---
+func _on_options_button_mouse_entered() -> void:
+	options_sprite.play("On")
 
-func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+func _on_options_button_mouse_exited() -> void:
+	options_sprite.play("Off")
