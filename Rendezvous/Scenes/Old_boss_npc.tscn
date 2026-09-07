@@ -58,10 +58,10 @@ text = "(Down)"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=118815812]
 
 [node name="ChatBox" type="Panel" parent="CanvasLayer" unique_id=1009648840]
-offset_left = 195.0
-offset_top = 372.0
-offset_right = 776.0
-offset_bottom = 491.0
+offset_left = 259.0
+offset_top = 427.0
+offset_right = 840.0
+offset_bottom = 546.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2hrnx")
 metadata/_edit_group_ = true
 
