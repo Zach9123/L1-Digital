@@ -40,6 +40,18 @@ func _physics_process(delta: float) -> void:
 	update_animation()
 	process_dash(delta) 
 	
+
+
+
+func check_hazards() -> void:
+	# Loop through everything the player is currently touching
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		# If the thing we hit is your spike TileMapLayer, run the respawn code
+		if collider and collider.name == "Spikes_obstacles":
+			respawn()
 	
 
 func handle_input() -> void: 
