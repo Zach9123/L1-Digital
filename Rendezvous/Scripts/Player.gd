@@ -37,9 +37,9 @@ func _physics_process(delta: float) -> void:
 	update_movement(delta)
 	update_states()
 	move_and_slide()
+	check_hazards() 
 	update_animation()
-	process_dash(delta) 
-	
+	process_dash(delta)
 
 
 
