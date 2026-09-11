@@ -1,22 +1,75 @@
 [gd_scene format=3 uid="uid://odv7j1404xr6"]
 
-[ext_resource type="Texture2D" uid="uid://cfnqfc81wvcag" path="res://sprites/Npc_bigboss_placeholder.png" id="1_b5h8w"]
 [ext_resource type="Script" uid="uid://b78nd43nc6trk" path="res://Scripts/old_boss_npc.gd" id="1_uo13p"]
+[ext_resource type="Texture2D" uid="uid://sib4ywr08dxj" path="res://sprites/old_boss_lvl1_v1.png" id="2_2hrnx"]
 [ext_resource type="FontFile" uid="uid://deaotract0w26" path="res://Other/PixelifySans-VariableFont_wght.ttf" id="3_fkknu"]
 [ext_resource type="FontFile" uid="uid://ho8er51p61kr" path="res://Other/Silkscreen-Regular.ttf" id="4_2hrnx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pr1l4"]
 radius = 184.01086
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sii4c"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5joan"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bgfw"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_544bw"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(0, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4pf6"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(448, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c07d8"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(896, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdmcr"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(0, 896, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1222"]
+atlas = ExtResource("2_2hrnx")
+region = Rect2(448, 896, 448, 448)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_c36lj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_b5h8w")
+"texture": SubResource("AtlasTexture_sii4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5joan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bgfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_544bw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4pf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c07d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdmcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1222")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hrnx"]
@@ -40,14 +93,15 @@ shape = SubResource("CircleShape2D_pr1l4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1070071791]
 position = Vector2(3, 1)
-scale = Vector2(1, 1.3214285)
 sprite_frames = SubResource("SpriteFrames_c36lj")
+autoplay = "default"
+frame_progress = 0.68037647
 
 [node name="UITip" type="Label" parent="." unique_id=1070580039]
-offset_left = -43.0
-offset_top = -113.0
-offset_right = 42.0
-offset_bottom = -81.0
+offset_left = -41.0
+offset_top = -141.0
+offset_right = 44.0
+offset_bottom = -109.0
 theme_override_colors/font_color = Color(0.29586652, 0.2958665, 0.2958665, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10

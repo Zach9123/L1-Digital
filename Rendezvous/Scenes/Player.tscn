@@ -3,8 +3,29 @@
 [ext_resource type="Script" uid="uid://hss5eyymjeei" path="res://Scripts/Player.gd" id="1_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://by7ahgyulgmxx" path="res://sprites/messenger_guy_idle_v1 (1).png" id="2_88kja"]
 [ext_resource type="Texture2D" uid="uid://dst208xact370" path="res://sprites/messenger_guy_fall_animation_V3 (1).png" id="2_gbyq6"]
+[ext_resource type="Texture2D" uid="uid://cpm1smi761rcj" path="res://sprites/messenger_guy_dash_animation_V1.png" id="2_nn08x"]
 [ext_resource type="Texture2D" uid="uid://dd0xwltor4yax" path="res://sprites/messenger_guy_run_animation_V3 (1).png" id="4_pbq55"]
 [ext_resource type="Texture2D" uid="uid://vpg7losv4fhq" path="res://sprites/messenger_guy_jump_animation_V1 (1)-1.png.png" id="4_t38ji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
+atlas = ExtResource("2_nn08x")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhhdu"]
+atlas = ExtResource("2_nn08x")
+region = Rect2(0, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_megsn"]
+atlas = ExtResource("2_nn08x")
+region = Rect2(448, 448, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoq75"]
+atlas = ExtResource("2_nn08x")
+region = Rect2(0, 896, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksbbd"]
+atlas = ExtResource("2_nn08x")
+region = Rect2(448, 896, 448, 448)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_601d1"]
 atlas = ExtResource("2_gbyq6")
@@ -92,10 +113,25 @@ region = Rect2(448, 448, 448, 448)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c36lj"]
 animations = [{
-"frames": [],
-"loop": 1,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52ee3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhhdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_megsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoq75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksbbd")
+}],
+"loop": 0,
 "name": &"dash",
-"speed": 5.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -194,8 +230,10 @@ script = ExtResource("1_5ixxa")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
 position = Vector2(2.3750012, 1.3750012)
 sprite_frames = SubResource("SpriteFrames_c36lj")
-animation = &"down"
+animation = &"dash"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
 position = Vector2(8, 4)
