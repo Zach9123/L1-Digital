@@ -4,7 +4,7 @@ extends Area2D
 @onready var chat_box: Panel = $CanvasLayer/ChatBox
 @onready var dialogue_text: Label = $CanvasLayer/ChatBox/DialogueText
 
-@export var dialogue_lines: Array[String] = ["I didn't think you'd show...", "Now let's cut to the chace.", "You've found yourseld in a little bit of debt. \nAm I right?", "Take it to BoBo in the land down under. \nDon't ask anymore questions.", "canniball asshole."]
+@export var dialogue_lines: Array[String] = ["I didn't think you'd show...", "Now let's cut to the chace.", "You've found yourself in a little\nbit of debt. Am I right?", "To 'fix' that issue, I need you to deliver\na message.", "Take it though the city, there will\nbe someone waiting for you on a\n rooftop."]
 @export var typing_speed: float = 0.04
 
 var player_in_range: bool = false

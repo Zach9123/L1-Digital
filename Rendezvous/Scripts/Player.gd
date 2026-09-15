@@ -34,11 +34,21 @@ var start_position = Vector2(579, 319)
 enum State{idle, walk, jump, down, dash}
 var current_state: State = State.idle
 
+# Add a boolean to track if the player is currently dying
+var is_dead: bool = false
+
 func _ready() -> void:
 	if camera:
 		default_zoom = camera.zoom
 
 func _physics_process(delta: float) -> void:
+	# If dead, stop processing inputs and normal states
+	if is_dead:
+		velocity.x = move_toward(velocity.x, 0, acceleration) # Stop horizontal movement
+		velocity.y += gravity * delta # Still apply gravity so they fall if they die mid-air
+		move_and_slide()
+		return
+		
 	handle_input()
 	update_movement(delta)
 	update_states()
@@ -52,11 +62,27 @@ func check_hazards() -> void:
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		
-		if collider and collider.name == "Spikes_obstacles":
-			respawn()
+		# Make sure we don't trigger die() repeatedly if already dead
+		if collider and collider.name == "Spikes_obstacles" and not is_dead:
+			die()
+
+# --- NEW DEATH FUNCTION ---
+func die() -> void:
+	is_dead = true
+	animations.play("death")
+	
+	# Wait for the death animation to finish completely before moving on
+	await animations.animation_finished
+	respawn()
+# --------------------------
+
+func respawn():
+	position = start_position
+	# Reset states so the player can move normally again
+	is_dead = false
+	current_state = State.idle
 
 func handle_input() -> void: 
-	# Stop all movement and ignore inputs if talking
 	if in_dialogue:
 		velocity.x = move_toward(velocity.x, 0, acceleration)
 		return
@@ -134,9 +160,6 @@ func update_states() -> void:
 			else:
 				current_state = State.walk
 				
-func respawn():
-	position = start_position
-	
 func start_dash() -> void:
 	is_dashing = true
 	can_dash = false
