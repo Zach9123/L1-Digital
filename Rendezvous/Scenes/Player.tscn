@@ -317,9 +317,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbyq6"]
-radius = 23.0
-height = 118.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p6j4"]
+size = Vector2(37, 130)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1793281390]
 script = ExtResource("1_5ixxa")
@@ -327,14 +326,12 @@ script = ExtResource("1_5ixxa")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=351196918]
 position = Vector2(2.3750012, 1.3750012)
 sprite_frames = SubResource("SpriteFrames_c36lj")
-animation = &"death"
+animation = &"run"
 autoplay = "idle"
-frame = 12
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497935061]
-position = Vector2(8, 4)
-shape = SubResource("CapsuleShape2D_gbyq6")
+position = Vector2(11.5, -1)
+shape = SubResource("RectangleShape2D_7p6j4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1410634314]
 scale = Vector2(0.5, 0.5)

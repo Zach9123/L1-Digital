@@ -104,6 +104,8 @@ func handle_input() -> void:
 		velocity.x = move_toward(velocity.x, speed * direction, acceleration)
 		
 func update_animation() -> void:
+	if is_dead: return # <--- THIS PREVENTS OVERWRITING THE DEATH ANIMATION
+
 	if velocity.x != 0:
 		animations.scale.x = sign(velocity.x)
 		
@@ -209,4 +211,4 @@ func reset_camera() -> void:
 		
 	camera_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE)
 	camera_tween.tween_property(camera, "offset", Vector2.ZERO, 0.5)
-	camera_tween.tween_property(camera, "zoom", default_zoom, 0.5)
+	camera_tween.tween_property(camera, "zoom", default_zoom, 0.5) 
