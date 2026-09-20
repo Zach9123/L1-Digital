@@ -34,7 +34,6 @@ var start_position = Vector2(579, 319)
 enum State{idle, walk, jump, down, dash}
 var current_state: State = State.idle
 
-# Add a boolean to track if the player is currently dying
 var is_dead: bool = false
 
 func _ready() -> void:
@@ -42,10 +41,9 @@ func _ready() -> void:
 		default_zoom = camera.zoom
 
 func _physics_process(delta: float) -> void:
-	# If dead, stop processing inputs and normal states
 	if is_dead:
-		velocity.x = move_toward(velocity.x, 0, acceleration) # Stop horizontal movement
-		velocity.y += gravity * delta # Still apply gravity so they fall if they die mid-air
+		velocity.x = move_toward(velocity.x, 0, acceleration) 
+		velocity.y += gravity * delta 
 		move_and_slide()
 		return
 		
@@ -62,23 +60,23 @@ func check_hazards() -> void:
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		
-		# Make sure we don't trigger die() repeatedly if already dead
 		if collider and collider.name == "Spikes_obstacles" and not is_dead:
 			die()
 
-# --- NEW DEATH FUNCTION ---
 func die() -> void:
 	is_dead = true
 	animations.play("death")
 	
-	# Wait for the death animation to finish completely before moving on
 	await animations.animation_finished
 	respawn()
-# --------------------------
 
-func respawn():
+func respawn() -> void:
 	position = start_position
-	# Reset states so the player can move normally again
+	
+	# Play the death animation in reverse
+	animations.play_backwards("death")
+	await animations.animation_finished
+	
 	is_dead = false
 	current_state = State.idle
 
@@ -104,7 +102,7 @@ func handle_input() -> void:
 		velocity.x = move_toward(velocity.x, speed * direction, acceleration)
 		
 func update_animation() -> void:
-	if is_dead: return # <--- THIS PREVENTS OVERWRITING THE DEATH ANIMATION
+	if is_dead: return 
 
 	if velocity.x != 0:
 		animations.scale.x = sign(velocity.x)
@@ -211,4 +209,9 @@ func reset_camera() -> void:
 		
 	camera_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE)
 	camera_tween.tween_property(camera, "offset", Vector2.ZERO, 0.5)
-	camera_tween.tween_property(camera, "zoom", default_zoom, 0.5) 
+	camera_tween.tween_property(camera, "zoom", default_zoom, 0.5)
+
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	get_tree().change_scene_to_file("res://Scenes/End_screen.tscn")

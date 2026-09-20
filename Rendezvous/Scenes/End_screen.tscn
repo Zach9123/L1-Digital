@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b612ps4bomcw7"]
+
+[ext_resource type="Script" uid="uid://xfifi2gu3bwi" path="res://Scripts/End_screen.gd" id="1_f32uf"]
+
+[node name="End_screen" type="Node2D" unique_id=348696119]
+script = ExtResource("1_f32uf")
+
+[node name="Button" type="Button" parent="." unique_id=142341083]
+offset_left = 368.0
+offset_top = 354.0
+offset_right = 731.0
+offset_bottom = 518.0
+text = "Play again "
+
+[node name="Label" type="Label" parent="." unique_id=931093919]
+offset_left = 353.0
+offset_top = 183.0
+offset_right = 772.0
+offset_bottom = 335.0
+text = "Thank you for playing the second version of our game!
+If you have any feedback please use the google form
+in the description.  If you found it too difficult, checkpoints
+will most likely be added in the final version.
+
+Hope you've enjoyed playing!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
