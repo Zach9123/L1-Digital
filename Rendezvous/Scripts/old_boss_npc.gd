@@ -4,9 +4,9 @@ extends Area2D
 @onready var chat_box: Panel = $CanvasLayer/ChatBox
 @onready var dialogue_text: Label = $CanvasLayer/ChatBox/DialogueText
 
-@export var dialogue_lines: Array[String] = ["I didn't think you'd show...", "Now let's cut to the chace.", "You've found yourself in a little\nbit of debt. Am I right?", "To 'fix' that issue, I need you to deliver\na message.", "Take it though the city, there will\nbe someone waiting for you on a\n rooftop."]
+@export var dialogue_lines: Array[String] = ["I didn't think you'd show...", "Now let's cut to the chase.", "You've found yourself in a little\nbit of debt. Am I right?", "To 'fix' that issue, I need you to deliver\na message.", "Take it though the city, there will\nbe someone waiting for you on a\nrooftop."]
 @export var typing_speed: float = 0.04
-
+#"So you've actaully shown up... Here take this. Its withered kirk. Take it to bobo in the land down under. Don't ask anymore questions.
 var player_in_range: bool = false
 var current_line: int = 0
 var is_typing: bool = false
