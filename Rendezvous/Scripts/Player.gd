@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-# --- CAMERA & DIALOGUE VARIABLES ---
+# --- AUDIO, CAMERA & DIALOGUE VARIABLES ---
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var camera: Camera2D = $Camera2D 
 var default_zoom: Vector2 = Vector2(1, 1)
 var camera_tween: Tween
 var in_dialogue: bool = false
-# -----------------------------------
+# ------------------------------------------
 
 @export var acceleration: int = 200
 @export var speed: int = 380
@@ -123,6 +124,7 @@ func update_movement(delta: float) -> void:
 		current_state = State.jump
 		jump_buffer_timer.stop()
 		cyote_timer.stop()
+		jump_sound.play() # <--- PLAY JUMP SOUND HERE
 		 
 	if current_state == State.jump:
 		velocity.y += gravity * delta 
@@ -210,8 +212,3 @@ func reset_camera() -> void:
 	camera_tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE)
 	camera_tween.tween_property(camera, "offset", Vector2.ZERO, 0.5)
 	camera_tween.tween_property(camera, "zoom", default_zoom, 0.5)
-
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	get_tree().change_scene_to_file("res://Scenes/End_screen.tscn")

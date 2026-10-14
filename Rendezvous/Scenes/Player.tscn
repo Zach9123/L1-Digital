@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dd0xwltor4yax" path="res://sprites/messenger_guy_run_animation_V3 (1).png" id="4_pbq55"]
 [ext_resource type="Texture2D" uid="uid://vpg7losv4fhq" path="res://sprites/messenger_guy_jump_animation_V1 (1)-1.png.png" id="4_t38ji"]
 [ext_resource type="Texture2D" uid="uid://dgvp2ama516q2" path="res://sprites/messenger_guy_idle_v2.png" id="5_52ee3"]
+[ext_resource type="AudioStream" uid="uid://ch8la1jcie1xk" path="res://Sounds/jofae-swing-whoosh-110410.mp3" id="8_bhhdu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ee3"]
 atlas = ExtResource("2_nn08x")
@@ -354,3 +355,7 @@ one_shot = true
 [node name="CyoteTimer" type="Timer" parent="." unique_id=1616286909]
 wait_time = 0.12
 one_shot = true
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=306816695]
+position = Vector2(8.5, -1)
+stream = ExtResource("8_bhhdu")
