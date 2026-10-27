@@ -537,6 +537,36 @@ position = Vector2(36, 21)
 sprite_frames = SubResource("SpriteFrames_oxswf")
 animation = &"Off"
 
+[node name="OptionsMenu" type="Panel" parent="." unique_id=1511455841]
+offset_left = 210.0
+offset_top = 149.0
+offset_right = 359.0
+offset_bottom = 275.0
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu" unique_id=1460946992]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 147.0
+offset_bottom = 125.0
+alignment = 1
+
+[node name="Button" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=793977251]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1564555099]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1524626402]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=2086507239]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1087408021]
+layout_mode = 2
+
 [connection signal="mouse_entered" from="Button_Manager/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button_Manager/OptionsButton" to="." method="_on_options_button_mouse_exited"]
 [connection signal="mouse_entered" from="Button_Manager/StartButton" to="." method="_on_start_button_mouse_entered"]

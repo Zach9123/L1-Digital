@@ -328,6 +328,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p6j4"]
 size = Vector2(43, 130)
 
+[sub_resource type="Gradient" id="Gradient_bhhdu"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oxswf"]
+gradient = SubResource("Gradient_bhhdu")
+width = 800
+height = 800
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7695652, 0.13913043)
+metadata/_snap_enabled = true
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1793281390]
 script = ExtResource("1_5ixxa")
 metadata/_edit_group_ = true
@@ -359,3 +371,8 @@ one_shot = true
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=306816695]
 position = Vector2(8.5, -1)
 stream = ExtResource("8_bhhdu")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1310131953]
+color = Color(0.89411765, 0.58431375, 0.16078432, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_oxswf")
