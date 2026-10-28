@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://odv7j1404xr6" path="res://Scenes/Old_boss_npc.tscn" id="4_7p6j4"]
 [ext_resource type="Texture2D" uid="uid://blakplt8m4f4c" path="res://sprites/hurty_tilesheet_lvl1_V1.png" id="4_6444e"]
 [ext_resource type="PackedScene" uid="uid://bapbdh45fni6i" path="res://Scenes/checkpoint.tscn" id="7_lsmp6"]
+[ext_resource type="Script" uid="uid://bm6e15lrmol8e" path="res://Scenes/area_2d.gd" id="7_wrinw"]
 [ext_resource type="Texture2D" uid="uid://qlipqmap77go" path="res://sprites/Door placeholder.png" id="7_xrdnt"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qed1"]
-size = Vector2(154, 277)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8i23i"]
 polygon = PackedVector2Array(-56, -56, 56, -56, 56, 56, -56, 56)
@@ -114,21 +112,11 @@ glow_intensity = 1.29
 glow_strength = 1.25
 glow_bloom = 0.2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qed1"]
+size = Vector2(154, 277)
+
 [node name="Level_1" type="Node2D" unique_id=828982695]
 metadata/_edit_vertical_guides_ = [3888.0]
-
-[node name="Area2D" type="Area2D" parent="." unique_id=542056583]
-position = Vector2(-33, 4)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=264747881]
-position = Vector2(7672, -3305)
-scale = Vector2(0.5223214, 0.71428573)
-texture = ExtResource("7_xrdnt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=701960961]
-position = Vector2(7673, -3284.5)
-shape = SubResource("RectangleShape2D_0qed1")
 
 [node name="Checkpoint" parent="." unique_id=1284131574 instance=ExtResource("7_lsmp6")]
 position = Vector2(3554, 409)
@@ -173,5 +161,19 @@ color = Color(0.3197427, 0.36161935, 0.56990844, 0.8)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1982420069]
 environment = SubResource("Environment_oxswf")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=542056583]
+position = Vector2(-33, 4)
+script = ExtResource("7_wrinw")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=264747881]
+position = Vector2(7672, -3305)
+scale = Vector2(0.5223214, 0.71428573)
+texture = ExtResource("7_xrdnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=701960961]
+position = Vector2(7673, -3284.5)
+shape = SubResource("RectangleShape2D_0qed1")
 
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]

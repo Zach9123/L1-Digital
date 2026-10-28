@@ -475,6 +475,10 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="Theme" id="Theme_1edw4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1edw4"]
+
 [node name="Main_Menu" type="Node2D" unique_id=977678936]
 script = ExtResource("1_c4tk2")
 
@@ -538,37 +542,44 @@ sprite_frames = SubResource("SpriteFrames_oxswf")
 animation = &"Off"
 
 [node name="OptionsMenu" type="Panel" parent="." unique_id=1511455841]
-offset_left = 210.0
-offset_top = 149.0
-offset_right = 359.0
-offset_bottom = 275.0
+modulate = Color(1.2574736, 0.9151899, 2.7483507e-06, 1)
+texture_filter = 1
+offset_left = 464.0
+offset_top = 145.0
+offset_right = 684.0
+offset_bottom = 404.0
+theme = SubResource("Theme_1edw4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1edw4")
 metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu" unique_id=1460946992]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 3.0
-offset_right = 147.0
-offset_bottom = 125.0
+offset_right = 216.0
+offset_bottom = 251.0
+offset_transform_enabled = true
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Button" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=793977251]
+[node name="JumpButton" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=793977251]
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1564555099]
+[node name="RightButton" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1564555099]
 layout_mode = 2
 
-[node name="Button3" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1524626402]
+[node name="LeftButton" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1524626402]
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=2086507239]
+[node name="DashButton" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=2086507239]
 layout_mode = 2
 
-[node name="Button5" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=1087408021]
+[node name="CloseButton" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=717368218]
 layout_mode = 2
 
 [connection signal="mouse_entered" from="Button_Manager/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button_Manager/OptionsButton" to="." method="_on_options_button_mouse_exited"]
+[connection signal="pressed" from="Button_Manager/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="mouse_entered" from="Button_Manager/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button_Manager/StartButton" to="." method="_on_start_button_mouse_exited"]
 [connection signal="pressed" from="Button_Manager/StartButton" to="." method="_on_start_button_pressed"]
