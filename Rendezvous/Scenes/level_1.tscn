@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://odv7j1404xr6" path="res://Scenes/Old_boss_npc.tscn" id="4_7p6j4"]
 [ext_resource type="Texture2D" uid="uid://blakplt8m4f4c" path="res://sprites/hurty_tilesheet_lvl1_V1.png" id="4_6444e"]
 [ext_resource type="PackedScene" uid="uid://bapbdh45fni6i" path="res://Scenes/checkpoint.tscn" id="7_lsmp6"]
-[ext_resource type="Script" uid="uid://bm6e15lrmol8e" path="res://Scenes/area_2d.gd" id="7_wrinw"]
+[ext_resource type="Script" uid="uid://bm6e15lrmol8e" path="res://Scripts/area_2d.gd" id="7_wrinw"]
 [ext_resource type="Texture2D" uid="uid://qlipqmap77go" path="res://sprites/Door placeholder.png" id="7_xrdnt"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8i23i"]

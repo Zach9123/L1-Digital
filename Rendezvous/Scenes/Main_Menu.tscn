@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://76idxjgcp63g" path="res://sprites/start_buttonV1.png" id="4_00u4r"]
 [ext_resource type="Texture2D" uid="uid://dpguoa7rpan8r" path="res://sprites/option_buttonV1.png" id="5_anlgx"]
 [ext_resource type="Texture2D" uid="uid://c4rnmuhwc4ly8" path="res://sprites/Endbutton.png" id="6_xvotp"]
+[ext_resource type="AudioStream" uid="uid://crwybcd66306f" path="res://Sounds/freesound_community-game-start-6104.mp3" id="7_1edw4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7rmo"]
 atlas = ExtResource("2_rmbjf")
@@ -576,6 +577,9 @@ layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="OptionsMenu/VBoxContainer" unique_id=717368218]
 layout_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1241190543]
+stream = ExtResource("7_1edw4")
 
 [connection signal="mouse_entered" from="Button_Manager/OptionsButton" to="." method="_on_options_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button_Manager/OptionsButton" to="." method="_on_options_button_mouse_exited"]

@@ -3,7 +3,7 @@ extends Node2D
 @onready var start_sprite: AnimatedSprite2D = $Button_Manager/StartButton/Start
 @onready var options_sprite: AnimatedSprite2D = $Button_Manager/OptionsButton/Options
 @onready var end_sprite: AnimatedSprite2D = $"Button_Manager/End Button/End"
-
+@onready var start_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 # --- OPTIONS MENU VARIABLES ---
 @onready var options_menu: Panel = $OptionsMenu 
 @onready var left_button: Button = $OptionsMenu/VBoxContainer/LeftButton
@@ -50,7 +50,13 @@ func _on_start_button_mouse_exited() -> void:
 	start_sprite.play("Off")
 
 func _on_start_button_pressed() -> void:
+	if start_sound:
+		start_sound.play()
+		
+	await get_tree().create_timer(0.4).timeout # Waits exactly 1.2 seconds
+	
 	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	
 
 # --- Options Button ---
 func _on_options_button_mouse_entered() -> void:
