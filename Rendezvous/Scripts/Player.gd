@@ -217,4 +217,5 @@ func reset_camera() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	
+	get_tree().change_scene_to_file("res://Scenes/End_screen.tscn")

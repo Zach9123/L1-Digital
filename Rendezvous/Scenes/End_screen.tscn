@@ -18,10 +18,18 @@ offset_top = 183.0
 offset_right = 772.0
 offset_bottom = 335.0
 text = "Thank you for playing the second version of our game!
-If you have any feedback please use the google form
-in the description.  If you found it too difficult, checkpoints
-will most likely be added in the final version.
+We were on a time crunch so a second level was out of 
+the option, though we took the feedback and did what 
+we could to make the game more enjoyable.
 
 Hope you've enjoyed playing!"
+
+[node name="Label2" type="Label" parent="." unique_id=1132827426]
+offset_left = 15.0
+offset_top = 546.0
+offset_right = 268.0
+offset_bottom = 615.0
+text = "Programming and design - Zach L
+Art and design - James H"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
